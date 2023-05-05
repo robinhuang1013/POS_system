@@ -3,14 +3,14 @@
 #include"data.h"
 #include"function.h"
 using namespace std;
-
-fstream productFile,totalFile;
-product meal[7];
+using namespace user;
+fstream productFile;
+product meal[9];
 //===============================//
 
 int main(){  
     productFile.open("data.txt",ios::in|ios::binary);
-    for(int i=0;i<7;i++){
+    for(int i=0;i<9;i++){
         productFile.read(reinterpret_cast<char * >(&meal[i]),sizeof(product));
         meal[i].show();
     }
@@ -23,13 +23,23 @@ int main(){
         int input;
         cout<<"input number:";
         cin>>input;
-        if(input==0){
+        if(input==0){ 
             totalFun(total);
+            fstream totalFile;
+            totalFile.open("total.txt",ios::in);
+            int temp;
+            totalFile>>temp;
+            temp=temp+total;
+            totalFile.close();
+            totalFile.open("total.txt",ios::out);
+            totalFile<<temp<<endl;
+            totalFile.close(); 
+            total=0;
+        }else if(input==999){
             break;
-        }
+        } 
         total=total+meal[input-1].getPrice();
-        meal[input-1].changCount();
-        
+        meal[input-1].changCount();    
     }
     
     system("pause");

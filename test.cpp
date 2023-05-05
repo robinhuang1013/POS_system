@@ -3,7 +3,7 @@
 #include"data.h"
 #include"function.h"
 using namespace std;
-
+using namespace user;
 fstream productFile;
 product meal[9];
 //===============================//
@@ -25,6 +25,15 @@ int main(){
         cin>>input;
         if(input==0){ 
             totalFun(total);
+            fstream totalFile;
+            totalFile.open("total.txt",ios::in);
+            int temp;
+            totalFile>>temp;
+            temp=temp+total;
+            totalFile.close();
+            totalFile.open("total.txt",ios::out);
+            totalFile<<temp<<endl;
+            totalFile.close(); 
             total=0;
         }else if(input==999){
             break;

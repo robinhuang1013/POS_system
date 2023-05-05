@@ -12,10 +12,7 @@ int main(){
     menu();
     int a;
     cin>>a;
-    if(a==0){
-        system("pause");
-        return 0;
-    }else if(a==2){
+    if(a==2){
         Idata.open("data.txt",ios::binary);
         for(int i=0;i<9;i++){
             Idata.read(reinterpret_cast<char * >(&meal[i]),sizeof(product));
@@ -23,7 +20,7 @@ int main(){
         }  
         Idata.close();
         return main();
-    }else{
+    }else if(a==1){
         cout<<"Please do not end the program midway!!!!!"<<endl;
         Odata.open("data.txt",ios::binary);
         for(int i=0;i<9;i++){
@@ -44,7 +41,16 @@ int main(){
         Idata.close();
         return main();
     }    
-    
+    cout<<"reset total.txt?"<<endl<<" yes(1)  no(0)"<<endl;
+    int temp;
+    cin>>temp;
+    if(temp==1){
+        fstream totalFile;
+        totalFile.open("total.txt",ios::out);
+        temp=0;
+        totalFile<<temp;
+        totalFile.close();
+    }
     system("pause");
     return 0;
 }
