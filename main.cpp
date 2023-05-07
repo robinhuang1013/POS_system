@@ -4,11 +4,13 @@
 #include"function.h"
 using namespace std;
 using namespace user;
-fstream productFile;
-product meal[9];
+
+
 //===============================//
 
-int main(){  
+int main(){
+    fstream productFile; 
+    product meal[9];
     productFile.open("data.txt",ios::in|ios::binary);
     for(int i=0;i<9;i++){
         productFile.read(reinterpret_cast<char * >(&meal[i]),sizeof(product));
@@ -18,30 +20,45 @@ int main(){
     menu();
     int choice=mod();
     int total=0;
+    int tempCount[9]={0};
+    int * disptr=new int(0);
     while(choice==1){
         UI();
         int input;
         cout<<"input number:";
         cin>>input;
-        if(input==0){ 
-            totalFun(total);
-            fstream totalFile;
-            totalFile.open("total.txt",ios::in);
-            int temp;
-            totalFile>>temp;
-            temp=temp+total;
-            totalFile.close();
-            totalFile.open("total.txt",ios::out);
-            totalFile<<temp<<endl;
-            totalFile.close(); 
+        cout<<line<<endl;
+        if(input==0){           
+            for(int i=0;i<9;i++){
+                if(tempCount[i]!=0){
+                    cout<<"meal "<<i+1<<" have "<<tempCount[i]<<endl;
+                }
+                tempCount[i]=0;
+                
+            }
+            cout<<"cup discount: "<<*disptr<<endl;
+            totalFun(total,0);
+             
             total=0;
+            *disptr=0;
         }else if(input==999){
             break;
-        } 
-        total=total+meal[input-1].getPrice();
-        meal[input-1].changCount();    
+        }else if(input>0&&input<10){
+            total=total+meal[input-1].getPrice();
+            meal[input-1].changCount();
+            productFile.open("data.txt",ios::out|ios::binary);
+            for (int i = 0; i < 9; i++){
+                productFile.write(reinterpret_cast<char*>(&meal[i]),sizeof(product));
+            }
+            tempCount[input-1]+=1;
+		    productFile.close();
+            total+=discount(input, disptr);
+        }else{
+            cout<<"1~9"<<endl;
+        }
+        
     }
-    
+    delete disptr;  
     system("pause");
     return 0;
 }

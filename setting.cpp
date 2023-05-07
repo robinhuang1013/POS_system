@@ -40,17 +40,7 @@ int main(){
         }  
         Idata.close();
         return main();
-    }    
-    cout<<"reset total.txt?"<<endl<<" yes(1)  no(0)"<<endl;
-    int temp;
-    cin>>temp;
-    if(temp==1){
-        fstream totalFile;
-        totalFile.open("total.txt",ios::out);
-        temp=0;
-        totalFile<<temp;
-        totalFile.close();
-    }
+    } 
     system("pause");
     return 0;
 }
