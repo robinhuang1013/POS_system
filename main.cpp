@@ -38,7 +38,6 @@ int main(){
             }
             cout<<"cup discount: "<<*disptr<<endl;
             totalFun(total,0);
-             
             total=0;
             *disptr=0;
         }else if(input==999){
