@@ -15,10 +15,23 @@ namespace user{
 		return a;
 	}
 	void UI(){
-		cout<<line<<endl<<"1:name  2:name 3:name "<<endl<<"4:name  5:name 6:name"<<endl<<"7:name  8:name 9:name"<<endl;
+		cout << "+---+-----------------+" << endl;
+		cout << "| # |      Name       |" << endl;
+		cout << "+---+-----------------+" << endl;
+		cout << "| 1 | Cheeseburger    |" << endl;
+		cout << "| 2 | Hamburger       |" << endl;
+		cout << "| 3 | Double Cheese   |" << endl;
+		cout << "| 4 | Double Cheese   |" << endl;
+		cout << "| 5 | Double Cheese   |" << endl;
+		cout << "| 6 | Double Cheese   |" << endl;
+		cout << "| 7 | Double Cheese   |" << endl;
+		cout << "| 8 | Double Cheese   |" << endl;
+		cout << "| 9 | Double Cheese   |" << endl;
+		cout << "+---+-----------------+" << endl;
+		cout<<line<<endl;
 
 	}
-	void totalFun(int tempTotal,int frist){
+	void savetotal_chang(int tempTotal,int frist){
 		int temp=0,cash;
 		if(frist==0){
 			fstream totalFile;
@@ -38,7 +51,7 @@ namespace user{
 		if(cash>=tempTotal){
 			cout<<"change: "<<cash-tempTotal<<endl;
 		}else{
-			return totalFun(tempTotal-cash,1);
+			return savetotal_chang(tempTotal-cash,1);
 		}
 		
 	}
