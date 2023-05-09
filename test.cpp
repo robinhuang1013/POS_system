@@ -10,9 +10,9 @@ using namespace user;
 
 int main(){
     fstream productFile; 
-    product meal[9];
+    product meal[Max];
     productFile.open("data.txt",ios::in|ios::binary);
-    for(int i=0;i<9;i++){
+    for(int i=0;i<Max;i++){
         productFile.read(reinterpret_cast<char * >(&meal[i]),sizeof(product));
         meal[i].show();
     }
@@ -20,7 +20,7 @@ int main(){
     menu();
     int choice=mod();
     int total=0;
-    int tempCount[9]={0};
+    int tempCount[Max]={0};
     int * disptr=new int(0);
     while(choice==1){
         UI();
@@ -29,7 +29,7 @@ int main(){
         cin>>input;
         cout<<line<<endl;
         if(input==0){           
-            for(int i=0;i<9;i++){
+            for(int i=0;i<Max;i++){
                 if(tempCount[i]!=0){
                     cout<<"meal "<<i+1<<" have "<<tempCount[i]<<endl;
                 }
