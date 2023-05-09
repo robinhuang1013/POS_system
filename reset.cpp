@@ -1,9 +1,10 @@
 #include<iostream>
 #include<fstream>
 #include"data.h"
+#define Max 9;
 using namespace std;
 int main(){
-    product meal[9];
+    product meal[Max];
     int temp;
     fstream totalFile,productFile;
     int check;
@@ -21,14 +22,14 @@ int main(){
     totalFile.close();
     cout<<"the daily file is reset"<<endl;
     productFile.open("data.txt",ios::in|ios::binary);
-    for(int i=0;i<9;i++){
+    for(int i=0;i<Max;i++){
         productFile.read(reinterpret_cast<char *>(&meal[i]),sizeof(product));
         meal[i].show();
     }
     productFile.close();
     cout<<"============================================="<<endl;
     productFile.open("data.txt",ios::out|ios::binary);
-    for (int i = 0; i < 9; i++)
+    for (int i = 0; i < Max; i++)
     {
         meal[i].resetCount();
         productFile.write(reinterpret_cast<char* >(&meal[i]),sizeof(product));
