@@ -1,6 +1,7 @@
 #include<iostream>
 using namespace std;
 #define line "========================================="
+#define Max 10
 //===========================//
 namespace user{
 	void menu(){
@@ -15,19 +16,19 @@ namespace user{
 		return a;
 	}
 	void UI(){
-		cout << "+---+-----------------+" << endl;
-		cout << "| # |      Name       |" << endl;
-		cout << "+---+-----------------+" << endl;
-		cout << "| 1 | Cheeseburger    |" << endl;
-		cout << "| 2 | Hamburger       |" << endl;
-		cout << "| 3 | Double Cheese   |" << endl;
-		cout << "| 4 | Double Cheese   |" << endl;
-		cout << "| 5 | Double Cheese   |" << endl;
-		cout << "| 6 | Double Cheese   |" << endl;
-		cout << "| 7 | Double Cheese   |" << endl;
-		cout << "| 8 | Double Cheese   |" << endl;
-		cout << "| 9 | Double Cheese   |" << endl;
-		cout << "+---+-----------------+" << endl;
+		cout << "+---+------------------+-----------+" << endl;
+		cout << "| # |      Name        |   price   |" << endl;
+		cout << "+---+------------------+-----------|" << endl;
+		cout << "| 1 | Ice              |     15    |" << endl;
+		cout << "| 2 | Pancake          |     45    |" << endl;
+		cout << "| 3 | Pancake_Icecream |     59    |" << endl;
+		cout << "| 4 | MilkTea          |     45    |" << endl;
+		cout << "| 5 | Tea              |     30    |" << endl;
+		cout << "| 6 | Combo_ice_MilkTea|     99    |" << endl;
+		cout << "| 7 | Combo_ice_Tea    |     85    |" << endl;
+		cout << "| 8 | Combo_pan_MilkTea|     79    |" << endl;
+		cout << "| 9 | Combo_pan_Tea    |     70    |" << endl;
+		cout << "+---+------------------+-----------+" << endl;
 		cout<<line<<endl;
 
 	}
@@ -43,7 +44,6 @@ namespace user{
 			totalFile<<temp<<endl;
 			totalFile.close();
 		}
-		
 		cout<<line<<endl;
 		cout<<"total: "<<tempTotal<<endl;
 		cout<<"cash:";
