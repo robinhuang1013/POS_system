@@ -10,39 +10,37 @@ using namespace user;
 
 int main(){
     fstream productFile; 
-    product meal[9];
+    product meal[Max];
     productFile.open("data.txt",ios::in|ios::binary);
-    for(int i=0;i<9;i++){
+    for(int i=0;i<Max;i++){
         productFile.read(reinterpret_cast<char * >(&meal[i]),sizeof(product));
         meal[i].show();
     }
     productFile.close();
-    menu();
+    open();
     int choice=mod();
     int total=0;
     int tempCount[9]={0};
     int * disptr=new int(0);
     while(choice==1){
-        UI();
-        int input;
-        cout<<"input number:";
-        cin>>input;
-        cout<<line<<endl;
+        menu();
+        int input=order();
         if(input==0){           
             for(int i=0;i<9;i++){
                 if(tempCount[i]!=0){
                     cout<<"meal "<<i+1<<" have "<<tempCount[i]<<endl;
                 }
-                tempCount[i]=0;
-                
+                tempCount[i]=0; 
             }
-            cout<<"cup discount: "<<*disptr<<endl;
+            if(*disptr!=0){
+                cout<<"cup discount: "<<*disptr<<endl;
+            }
             savetotal_chang(total,0);
             total=0;
             *disptr=0;
         }else if(input==999){
             break;
-        }else if(input>0&&input<10){
+        }else if(input>0&&input<=Max){
             total=total+meal[input-1].getPrice();
             meal[input-1].changCount();
             productFile.open("data.txt",ios::out|ios::binary);
@@ -53,7 +51,7 @@ int main(){
 		    productFile.close();
             total+=discount(input, disptr);
         }else{
-            cout<<"1~9"<<endl;
+            cout<<"1~"<<Max<<endl;
         }
         
     }

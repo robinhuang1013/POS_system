@@ -6,39 +6,17 @@ using namespace std;
 using namespace setting;
 
 int main(){
-    product meal[Max];
-    ifstream Idata;
-    ofstream Odata;
     menu();
-    int a;
-    cin>>a;
-    if(a==2){
-        Idata.open("data.txt",ios::binary);
-        for(int i=0;i<Max;i++){
-            Idata.read(reinterpret_cast<char * >(&meal[i]),sizeof(product));
-            meal[i].show();  
-        }  
-        Idata.close();
+    int input;
+    cout<<"input number:";
+    cin>>input;
+    cout<<line<<endl;
+    if(input==2){
+        view();
         return main();
-    }else if(a==1){
-        cout<<"Please do not end the program midway!!!!!"<<endl;
-        Odata.open("data.txt",ios::binary);
-        for(int i=0;i<Max;i++){
-            int a;
-            cout<<"number:"<<i+1<<" price:";
-            cin>>a;
-            cout<<endl;
-            meal[i].setNumber_andPrice(i+1,a);
-            Odata.write( reinterpret_cast<char * > (&meal[i]),sizeof(product));
-        }
-        Odata.close();
-        system("pause");
-        Idata.open("data.txt",ios::binary);
-        for(int i=0;i<Max;i++){
-            Idata.read(reinterpret_cast<char * >(&meal[i]),sizeof(product));
-            meal[i].show();  
-        }  
-        Idata.close();
+    }else if(input==1){
+        setPrice();
+        view();
         return main();
     } 
     system("pause");
