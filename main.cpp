@@ -26,7 +26,7 @@ int main(){
         menu();
         int input=order();
         if(input==0){           
-            for(int i=0;i<9;i++){
+            for(int i=0;i<Max;i++){
                 if(tempCount[i]!=0){
                     cout<<"meal "<<i+1<<" have "<<tempCount[i]<<endl;
                 }
@@ -62,4 +62,3 @@ int main(){
 
 
 //=============================//
- 

@@ -54,14 +54,3 @@ int product::getPrice(){
 int product::getCount(){
     return count;
 }
-/*
-number:1, price:15 ,count:0
-number:2, price:45 ,count:0
-number:3, price:59 ,count:0
-number:4, price:30 ,count:0 c
-number:5, price:45 ,count:0 c
-number:6, price:70 ,count:0 c
-number:7, price:79 ,count:0 c
-number:8, price:85 ,count:0 c
-number:9, price:99 ,count:0 c
-*/

@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 #define line "========================================="
-#define Max 5
+#define Max 8
 #define discountNumber -5
 //===========================//
 namespace user{
@@ -20,20 +20,19 @@ namespace user{
 		return a;
 	}
 	void menu(){
-		cout<<endl<<endl<<endl<<line<<endl;
-		cout << "+---+------------------+-----------+" << endl;
-		cout << "| # |      Name        |   price   |" << endl;
-		cout << "+---+------------------+-----------|" << endl;
-		cout << "| 1 | Ice              |     15    |" << endl;
-		cout << "| 2 | Pancake          |     45    |" << endl;
-		cout << "| 3 | Pancake_Icecream |     59    |" << endl;
-		cout << "| 4 | MilkTea          |     45    |" << endl;
-//		cout << "| 5 | Tea              |     30    |" << endl;
-//		cout << "| 6 | Combo_ice_MilkTea|     99    |" << endl;
-//		cout << "| 7 | Combo_ice_Tea    |     85    |" << endl;
-//		cout << "| 8 | Combo_pan_MilkTea|     79    |" << endl;
-//		cout << "| 9 | Combo_pan_Tea    |     70    |" << endl;
-		cout << "+---+------------------+-----------+" << endl;
+		cout<<endl<<endl<<line<<endl;
+		cout<< "+---+------------------+-----------+" << endl
+			<< "| # |      Name        |   price   |" << endl
+			<< "+---+------------------+-----------|" << endl
+		 	<< "| 1 | Nuggets          |     15    |" << endl
+			<< "| 2 | French fries     |     45    |" << endl
+			<< "| 3 | Hash             |     59    |" << endl
+			<< "| 4 | Puffs            |     45    |" << endl
+			<< "| 5 | Ice_Chocolate    |     30    |" << endl
+			<< "| 6 | Ice_Milk         |     99    |" << endl
+			<< "| 7 | Ice_Cantaloupe   |     85    |" << endl
+			<< "| 8 | Soda             |     79    |" << endl
+			<< "+---+------------------+-----------+" << endl;
 		cout<<line<<endl;
 
 	}
@@ -48,11 +47,11 @@ namespace user{
 		int temp=0,cash;
 		if(frist==0){
 			fstream totalFile;
-        	totalFile.open("total.txt",ios::in);
+        	totalFile.open("total.shop",ios::in|ios::binary);
 			totalFile>>temp;
 			temp=temp+tempTotal;           
 			totalFile.close();
-			totalFile.open("total.txt",ios::out);
+			totalFile.open("total.shop",ios::out|ios::binary);
 			totalFile<<temp<<endl;
 			totalFile.close();
 		}
@@ -71,7 +70,7 @@ namespace user{
 		
 	}
 	int discount(int num,int *ptr){
-		if(num>3){
+		if(num==8){
 			cout<<"have cup"<<endl;
 			cout<<" yes(1) no(0)"<<endl;
 			int cup;
@@ -137,9 +136,9 @@ namespace reset{
 	void totalFile_reset(){
 		fstream totalFile;
 		int temp;
-		totalFile.open("total.txt",ios::out);
+		totalFile.open("total.shop",ios::out|ios::binary);
 		temp=0;
-		cout<<"total.txt="<<temp<<endl;
+		cout<<"total.shop="<<temp<<endl;
 		cout<<"============================================="<<endl;
 		totalFile<<temp;
 		totalFile.close();

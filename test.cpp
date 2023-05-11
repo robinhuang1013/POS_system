@@ -26,7 +26,7 @@ int main(){
         menu();
         int input=order();
         if(input==0){           
-            for(int i=0;i<9;i++){
+            for(int i=0;i<Max;i++){
                 if(tempCount[i]!=0){
                     cout<<"meal "<<i+1<<" have "<<tempCount[i]<<endl;
                 }
@@ -40,7 +40,7 @@ int main(){
             *disptr=0;
         }else if(input==999){
             break;
-        }else if(input>0&&input<10){
+        }else if(input>0&&input<=Max){
             total=total+meal[input-1].getPrice();
             meal[input-1].changCount();
             productFile.open("data.txt",ios::out|ios::binary);
@@ -62,4 +62,3 @@ int main(){
 
 
 //=============================//
- 
